@@ -27,6 +27,6 @@ steps:
        testResultsFiles: '**/*.xml'
        mergeTestResults: true
        failTaskOnFailedTests: false
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+
+  
 
