@@ -19,7 +19,7 @@ steps:
         script: |
           mkdir testing
           cp Pet.postman_collection.json testing/
-          docker run -v ~/testing:/etc/newman -t postman/newman run Pet.postman_collection.json  --reporters cli,junit --reporter-junit-export junit-report.xml
+          docker run -v collections:/etc/newman -t postman/newman run petstore.json  --reporters cli,junit --reporter-junit-export junit-report.xml
             
           sleep 40
     - task: PublishTestResults@2
