@@ -17,8 +17,8 @@ steps:
       inputs:
       
         script: |
-         docker -version
-         newman run ./Pet.postman_collection.json  --reporters cli,junit --reporter-junit-export junit-report.xml         
+         docker run -t postman/newman Pet.postman_collection.json  --reporters cli,junit --reporter-junit-export junit-report.xml
+                 
          sleep 40
     - task: PublishTestResults@2
       displayName: 'Publish Test Results for postman'
