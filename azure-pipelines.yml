@@ -17,9 +17,8 @@ steps:
       inputs:
       
         script: |
-          mkdir testing
-          cp Pet.postman_collection.json testing/
           ls -ltr
+          pwd
           docker run -v collections:/etc/postman -t postman/newman run /etc/postman/petstore.json  --reporters cli,junit --reporter-junit-export junit-report.xml
           ls -ltr
           sleep 40
