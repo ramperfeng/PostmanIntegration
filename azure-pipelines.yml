@@ -18,7 +18,7 @@ steps:
         script: |
          sudo apt-get install -y bash
          sudo npm install newman --global
-         newman run https://github.com/ramperfeng/PostmanIntegration.git/Pet.postman_collection.json  --reporters cli,junit --reporter-junit-export junit-report.xml         
+         newman run ./Pet.postman_collection.json  --reporters cli,junit --reporter-junit-export junit-report.xml         
          sleep 40
     - task: PublishTestResults@2
       displayName: 'Publish Test Results for postman'
