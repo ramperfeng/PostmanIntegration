@@ -20,7 +20,7 @@ steps:
           ls -ltr
           pwd
           docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman run /etc/postman/petstore.json  --reporters cli,junit --reporter-junit-export junit-report.xml
-          ls -ltr
+          ls -ltr collections
           sleep 40
     - task: PublishTestResults@2
       displayName: 'Publish Test Results for postman'
