@@ -24,7 +24,7 @@ steps:
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: 'JUnit'
-        testResultsFiles: '$(System.DefaultWorkingDirectory)/collections/junit-report.xml'
+        testResultsFiles: '$(Pipeline.Workspace)/s/collections/*.xml'
     
 
    
