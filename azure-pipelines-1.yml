@@ -30,6 +30,13 @@ steps:
        mergeTestResults: true
        testRunTitle: Results       
        failTaskOnFailedTests: false
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '/etc/postman/*.xml'
+        failTaskOnFailedTests: true
+        testRunTitle: 'HTML Reports'
+       
    
 
 
