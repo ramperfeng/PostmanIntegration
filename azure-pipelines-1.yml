@@ -39,4 +39,4 @@ steps:
        failTaskOnFailedTests: false 
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '$(System.DefaultWorkingDirectory)'
+        cwd: '**'
