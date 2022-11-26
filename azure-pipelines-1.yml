@@ -21,11 +21,7 @@ steps:
           pwd
           docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman run /etc/postman/petstore.json  --reporters cli,junit --reporter-junit-export /etc/postman/junit-report.xml -r htmlextra
           ls -ltr collections
-    - task: Npm@1
-      inputs:
-        command: 'custom'
-        workingDir: 'instal npm html report'
-        customCommand: 'install -g newman -reporter-htmlextra'      
+      
           
     - task: PublishTestResults@2
       displayName: 'Publish Test Results for postman'
