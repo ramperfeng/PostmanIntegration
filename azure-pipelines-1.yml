@@ -18,8 +18,9 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t gunesmes/newman-postman-html-report run /etc/postman/petstore.json --reporters cli,junit --reporter-junit-export /etc/postman/junitReport.xml
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t newman/postman run /etc/postman/petstore.json --reporters cli,junit --reporter-junit-export /etc/postman/junitReport.xml
           ls -ltr collections
+          ls -ltr
        
     - task: PublishTestResults@2
       displayName: 'Publish Test Results for postman'
@@ -30,12 +31,12 @@ steps:
        mergeTestResults: true
        testRunTitle: Results       
        failTaskOnFailedTests: false
-    - task: PublishTestResults@2
+        
+    - task: UploadPostmanHtmlReport@1
+      displayName: 'Upload Postman Html Report'
       inputs:
-        testResultsFormat: 'JUnit'
-        testResultsFiles: '/etc/postman/*.xml'
-        failTaskOnFailedTests: true
-        testRunTitle: 'HTML Reports'
+        cwd: '$(System.DefaultWorkingDirectory)'
+        tabName: 'Postman Test'    
        
    
 
