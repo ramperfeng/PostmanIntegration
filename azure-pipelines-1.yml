@@ -38,9 +38,3 @@ steps:
        mergeTestResults: true
        failTaskOnFailedTests: false 
 
-    - task: publishhtmlreport@1
-      inputs:
-        htmlType: 'Jmeter'
-        JmeterReportsPath: '$(Pipeline.Workspace)/s/collections/report'  
-
-
