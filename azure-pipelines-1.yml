@@ -18,7 +18,7 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman run /etc/postman/petstore.json -r /etc/postman/cli,/etc/postman/json,/etc/postman/junit --reporter-junit-export /etc/postman/junitReport.xml
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman run /etc/postman/petstore.json --reporters /etc/postman/cli,/etc/postman/json,/etc/postman/junit, html --reporter-junit-export /etc/postman/junitReport.xml
           ls -ltr collections
           ls -ltr $(System.DefaultWorkingDirectory)
           ls -ltr
