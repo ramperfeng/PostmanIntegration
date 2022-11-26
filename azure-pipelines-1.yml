@@ -38,12 +38,13 @@ steps:
        mergeTestResults: true
        failTaskOnFailedTests: false 
 
-
-        
-    - task: UploadPostmanHtmlReport@1
+    - task: PublishPipelineArtifact@1
       inputs:
-        cwd: '**/TestResults'
-        tabName: 'HTML Report'
-   
+        targetPath: '$(Pipeline.Workspace)/s/collections/report'
+        publishLocation: 'pipeline'
+    - task: publishhtmlreport@1
+      inputs:
+        htmlType: 'Jmeter'
+        JmeterReportsPath: '$(Pipeline.Workspace)/s/collections/report'  
 
 
