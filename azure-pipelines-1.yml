@@ -38,5 +38,5 @@ steps:
            
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '$(Pipeline.Workspace)/s/collections'
+        cwd: '**/*.html'
         tabName: 'Postman'
