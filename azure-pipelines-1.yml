@@ -36,7 +36,7 @@ steps:
     - task: UploadPostmanHtmlReport@1
       displayName: 'Upload Postman Html Report'
       inputs:
-        cwd: '$(Pipeline.Workspace)/s/collections'
+        cwd: '$(System.DefaultWorkingDirectory)'
         tabName: 'Postman Test'
 
 
