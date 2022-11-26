@@ -19,13 +19,13 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t gunesmes/newman-postman-html-report run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export var/reports/newman/html/index.html
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t gunesmes/newman-postman-html-report run /etc/postman/petstore.json -r htmlextra --reporters html,cli,junit --reporter-junit-export /etc/postman/junit-report.xml
           ls -ltr collections
          
           pwd
           ls -ltr $(System.DefaultWorkingDirectory)
           pwd
-          ls -ltr TestResults
+          ls -ltr /home/vsts/work/_tasks
           pwd
           ls -ltr $(Pipeline.Workspace)
        
