@@ -19,7 +19,7 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman_alpine33 run /etc/postman/petstore.json -r cli,junit,json,html --reporter-junit-export /etc/postman/junit-report.xml
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t gunesmes/newman-postman-html-report run /etc/postman/petstore.json -r cli,junit,json,html --reporter-junit-export /etc/postman/junit-report.xml
           ls -ltr collections
          
           pwd
@@ -37,19 +37,7 @@ steps:
        testResultsFiles: '**/*.xml'       
        mergeTestResults: true
        failTaskOnFailedTests: false 
-    - task: CopyFiles@2
-      displayName: 'Copy Files'
-      inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**.vsix'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)/results'
-        
-
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact'
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)/results'
-       
+           
     - task: UploadPostmanHtmlReport@1
       inputs:
         cwd: '**/*'
