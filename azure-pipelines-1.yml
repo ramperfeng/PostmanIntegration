@@ -40,7 +40,7 @@ steps:
         
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '$(Pipeline.Workspace)/junit-report.xml'
+        cwd: '**/TestResults'
         tabName: 'HTML Report'
    
 
