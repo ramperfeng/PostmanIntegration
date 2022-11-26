@@ -10,7 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 
-
 steps:
     - task: CmdLine@2
       continueOnError: true
@@ -19,15 +18,14 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t gunesmes/newman-postman-html-report run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-title "My Newman Report"
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t gunesmes/newman-postman-html-report run /etc/postman/petstore.json --reporters cli,junit --reporter-junit-export Results\junitReport.xml
           ls -ltr collections
        
-    - task: UploadPostmanHtmlReport@1
-      displayName: 'Upload Postman Html Report'
+    - task: PublishTestResults@2
       inputs:
-        cwd: '$(System.DefaultWorkingDirectory)'
-        tabName: 'Postman Test'
-
+        testResultsFormat: 'JUnit'
+        testResultsFiles: '$(System.DefaultWorkingDirectory)/collections/junit-report.xml'
+    
 
    
 
