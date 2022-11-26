@@ -21,17 +21,6 @@ steps:
           pwd
           docker run -v /home/vsts/work/1/s/collections:/etc/postman -t gunesmes/newman-postman-html-report run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-title "My Newman Report"
           ls -ltr collections
-      
-          
-    - task: PublishTestResults@2
-      displayName: 'Publish Test Results for postman'
-      inputs:
-       testResultsFormat: 'JUnit'
-       searchFolder: '$(System.DefaultWorkingDirectory)'
-       testResultsFiles: '**/*.xml'       
-       mergeTestResults: true
-       testRunTitle: Results       
-       failTaskOnFailedTests: false
        
     - task: UploadPostmanHtmlReport@1
       displayName: 'Upload Postman Html Report'
