@@ -35,11 +35,9 @@ steps:
        failTaskOnFailedTests: false
         
     - task: UploadPostmanHtmlReport@1
-      displayName: 'Upload Postman Html Report'
       inputs:
-        cwd: '$(Pipeline.Workspace)/s/collections'
-        tabName: 'newman-report'    
-       
+        cwd: '$(System.DefaultWorkingDirectory)/collections'
+        tabName: 'HTML Report'
    
 
 
