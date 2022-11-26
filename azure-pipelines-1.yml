@@ -30,9 +30,12 @@ steps:
        testResultsFiles: '**/*.xml'       
        mergeTestResults: true
        failTaskOnFailedTests: false
-    - task: publishhtmlreport@1
+    - task: UploadPostmanHtmlReport@1
+      displayName: 'Upload Postman Html Report'
       inputs:
-        htmlType: 'Jmeter'
-        JmeterReportsPath: '$(Pipeline.Workspace)/s/etc/postman'
-  
+        cwd: '$(System.DefaultWorkingDirectory)'
+        tabName: 'Postman Test'
+
+
+          
 
