@@ -19,7 +19,7 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t gunesmes/newman-postman-html-report run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export ./results/report.html
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t gunesmes/newman-postman-html-report run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-title "My Newman Report"
           ls -ltr collections
       
           
