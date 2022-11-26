@@ -21,7 +21,7 @@ steps:
           pwd
           docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman_alpine33 run /etc/postman/petstore.json -r cli,junit,json --reporter-junit-export /etc/postman/junit-report.xml
           ls -ltr collections
-          ls -ltr /etc/postman
+         
           pwd
           ls -ltr $(System.DefaultWorkingDirectory)
           pwd
