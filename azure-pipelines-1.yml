@@ -36,7 +36,7 @@ steps:
     - task: UploadPostmanHtmlReport@1
       displayName: 'Upload Postman Html Report'
       inputs:
-        cwd: '$(System.DefaultWorkingDirectory)/collections'
+        cwd: '$(System.DefaultWorkingDirectory)/etc/postman'
         tabName: 'Postman Test'
 
 
