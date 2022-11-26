@@ -25,7 +25,7 @@ steps:
           pwd
           ls -ltr $(System.DefaultWorkingDirectory)
           pwd
-          ls -ltr $(Pipeline.Workspace)/TestResults
+          ls -ltr TestResults
           pwd
           ls -ltr $(Pipeline.Workspace)
        
@@ -37,4 +37,6 @@ steps:
        testResultsFiles: '**/*.xml'       
        mergeTestResults: true
        failTaskOnFailedTests: false 
-
+    - task: UploadPostmanHtmlReport@1
+      inputs:
+        cwd: '$(System.DefaultWorkingDirectory)'
