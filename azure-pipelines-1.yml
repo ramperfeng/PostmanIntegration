@@ -22,11 +22,14 @@ steps:
           ls -ltr collections
        
     - task: PublishTestResults@2
+      displayName: 'Publish Test Results for postman'
       inputs:
-        testResultsFormat: 'JUnit'
-        testResultsFiles: '$(Pipeline.Workspace)/s/collections/*.xml'
-    
-
+       testResultsFormat: 'JUnit'
+       searchFolder: '$(System.DefaultWorkingDirectory)'
+       testResultsFiles: '**/*.xml'       
+       mergeTestResults: true
+       testRunTitle: Results       
+       failTaskOnFailedTests: false
    
 
 
