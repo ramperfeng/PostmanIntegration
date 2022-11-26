@@ -38,5 +38,5 @@ steps:
            
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '/home/vsts/work/_tasks/index.js'
+        cwd: '$(Pipeline.Workspace)/s/collections'
         tabName: 'Postman'
