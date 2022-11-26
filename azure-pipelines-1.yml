@@ -38,10 +38,6 @@ steps:
        mergeTestResults: true
        failTaskOnFailedTests: false 
 
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '$(Pipeline.Workspace)/s/collections/report'
-        publishLocation: 'pipeline'
     - task: publishhtmlreport@1
       inputs:
         htmlType: 'Jmeter'
