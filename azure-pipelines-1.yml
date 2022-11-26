@@ -19,7 +19,7 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman_alpine33 run /etc/postman/petstore.json  --html="newman-results.html"
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman_alpine33 run /etc/postman/petstore.json  --reporter="newman-results.html"
           ls -ltr collections
        
     - task: PublishTestResults@2
