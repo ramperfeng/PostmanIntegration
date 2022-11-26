@@ -10,6 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 
+
 steps:
     - task: CmdLine@2
       continueOnError: true
@@ -18,11 +19,8 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman run /etc/postman/petstore.json --reporter-junit-export /etc/postman/junit-report.xml
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman run /etc/postman/petstore.json  --reporters cli,junit --reporter-junit-export /etc/postman/junit-report.xml
           ls -ltr collections
-          ls -ltr $(System.DefaultWorkingDirectory)
-          ls -ltr
-          pwd
        
     - task: PublishTestResults@2
       displayName: 'Publish Test Results for postman'
@@ -31,8 +29,9 @@ steps:
        searchFolder: '$(System.DefaultWorkingDirectory)'
        testResultsFiles: '**/*.xml'       
        mergeTestResults: true
-       testRunTitle: Results       
-       failTaskOnFailedTests: false
+       failTaskOnFailedTests: false 
+
+
         
     - task: UploadPostmanHtmlReport@1
       inputs:
