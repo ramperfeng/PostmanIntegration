@@ -21,6 +21,7 @@ steps:
           pwd
           docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman run /etc/postman/petstore.json  --reporters cli,junit --reporter-junit-export /etc/postman/junit-report.xml
           ls -ltr collections
+          ls -ltr /etc/postman
           
     - task: PublishTestResults@2
       displayName: 'Publish Test Results for postman'
@@ -29,13 +30,16 @@ steps:
        searchFolder: '$(System.DefaultWorkingDirectory)'
        testResultsFiles: '**/*.xml'       
        mergeTestResults: true
+       testRunTitle: Results       
        failTaskOnFailedTests: false
+       
     - task: UploadPostmanHtmlReport@1
       displayName: 'Upload Postman Html Report'
       inputs:
-        cwd: '$(Pipeline.Workspace)'
+        cwd: '$(System.DefaultWorkingDirectory)'
         tabName: 'Postman Test'
 
 
-          
+   
+
 
