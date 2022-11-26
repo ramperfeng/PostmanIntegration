@@ -40,4 +40,4 @@ steps:
            
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '/home/vsts/work/_tasks/*'
+        cwd: '/home/vsts/work/_tasks/'
