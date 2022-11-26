@@ -25,7 +25,8 @@ steps:
           pwd
           ls -ltr $(System.DefaultWorkingDirectory)
           pwd
-          ls -ltr $(Pipeline.Workspace)
+          ls -ltr $(Pipeline.Workspace)/TestResults
+          pwdls -ltr $(Pipeline.Workspace)
        
     - task: PublishTestResults@2
       displayName: 'Publish Test Results for postman'
