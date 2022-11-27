@@ -20,7 +20,7 @@ steps:
           ls -ltr
           pwd
           npm install -g newman-reporter-htmlextra
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman:alpine npm install -g newman-reporter-htmlextra run /etc/postman/petstore.json --reporters=cli,json,htmlextra --reporter-htmlextra-export /etc/postman/report.html
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json --reporters=cli,json,htmlextra --reporter-htmlextra-export /etc/postman/report.html --reporter-junit-export /etc/postman/junit-report.xml
           artifacts:
           when: always
           paths:
@@ -40,3 +40,6 @@ steps:
        mergeTestResults: true
        failTaskOnFailedTests: false 
            
+    - task: UploadPostmanHtmlReport@1
+      inputs:
+        cwd: '$(System.DefaultWorkingDirectory)'
