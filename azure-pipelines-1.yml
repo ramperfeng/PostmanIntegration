@@ -37,6 +37,8 @@ steps:
        failTaskOnFailedTests: false 
            
     - task: UploadPostmanHtmlReport@1
+      displayName: 'Upload Postman Html Report'
       inputs:
-        cwd: '**/*.html'
-        tabName: 'Postman'
+        cwd: '$(System.DefaultWorkingDirectory)/etc/postman'
+        continueOnError: true
+        condition: succeededOrFailed()
