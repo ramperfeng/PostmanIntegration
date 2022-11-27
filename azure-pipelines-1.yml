@@ -21,6 +21,7 @@ steps:
           docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export /etc/postman/index.html --reporter-htmlextra-title "ppp" --reporters=cli,htmlextra,junit --reporter-junit-export /etc/postman/junitreport.xml
           ls -ltr collections
           ls -ltr 
+          chmod a=rwx index.html
                 
           
           ls -ltr /home/vsts/work/_tasks
@@ -36,4 +37,10 @@ steps:
     
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '**/**'
+        cwd: '/home/vsts/work/_tasks/**'
+    - task: UploadPostmanHtmlReport@1
+      inputs:
+        cwd: '$(System.DefaultWorkingDirectory)/index.html'
+    - task: UploadPostmanHtmlReport@1
+      inputs:
+        cwd: '$(Pipeline.Workspace)/s/collections/**'
