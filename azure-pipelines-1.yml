@@ -18,7 +18,7 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json --reporters=cli,json,junit,htmlextra --reporter-junit-export /etc/postman/junitreport.xml --reporter-htmlextra-export /etc/postman/postmanreport.html 
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t DannyDainton/newman-reporter-htmlextra run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export test.html --reporter-htmlextra-template test.hbs --reporters=cli,json,junit --reporter-junit-export /etc/postman/junitreport.xml
           
           ls -ltr collections        
           
@@ -34,7 +34,9 @@ steps:
        testResultsFiles: '**/*.xml'       
        mergeTestResults: true
        failTaskOnFailedTests: false 
-           
+    
     - task: UploadPostmanHtmlReport@1
+      displayName: 'Upload Postman Html Report'
       inputs:
-        cwd: '$(Pipeline.Workspace)/s/collections/'
+        cwd: '$(System.DefaultWorkingDirectory)'
+        tabName: 'Postman Test'
