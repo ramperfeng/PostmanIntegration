@@ -18,12 +18,11 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export /etc/postman/test1.html --reporters=cli,htmlextra,junit --reporter-junit-export /etc/postman/junitreport.xml
-          
-          ls -ltr collections        
-          
-          pwd
-          ls -ltr $(Pipeline.Workspace)
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /var/etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export /etc/postman/test1.html --reporters=cli,htmlextra,junit --reporter-junit-export /etc/postman/junitreport.xml
+          ls -ltr collections
+          ls -ltr 
+          ls -ltr /home/vsts/work/1/s/collections       
+         
           ls -ltr /home/vsts/work/_tasks
        
     - task: PublishTestResults@2
