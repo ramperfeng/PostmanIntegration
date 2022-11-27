@@ -19,7 +19,8 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman:alpine run /etc/postman/petstore.json --reporters=cli,json,htmlextra --reporter-htmlextra-export /etc/postman/report.html
+          npm install -g newman-reporter-htmlextra
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t postman/newman:alpine npm install -g newman-reporter-htmlextra run /etc/postman/petstore.json --reporters=cli,json,htmlextra --reporter-htmlextra-export /etc/postman/report.html
           ls -ltr collections        
           
           pwd
