@@ -35,8 +35,9 @@ steps:
        mergeTestResults: true
        failTaskOnFailedTests: false 
     
-    - task: UploadPostmanHtmlReport@1
-      displayName: 'Upload Postman Html Report'
+    - task: NewmanPostman@4
       inputs:
-        cwd: '$(System.DefaultWorkingDirectory)'
-        tabName: 'Postman Test'
+        collectionSourceType: 'file'
+        reporters: 'html, htmlextra'
+        htmlExtraDarkTheme: true
+        htmlExtraLogs: true
