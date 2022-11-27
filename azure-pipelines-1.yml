@@ -19,7 +19,7 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -it -v /home/vsts/work/1/s/collections:/etc/postman" -t postman/newman:alpine run "/etc/postman/petstore.json" --reporters="cli,htmlextra" --reporter-htmlextra-export=“report.html”
+          docker run -it -v /home/vsts/work/1/s/collections:/etc/postman" -t postman/newman:alpine run "/etc/postman/petstore.json" --reporters=“cli,htmlextra” --reporter-htmlextra-export /etc/postman/report.html
           ls -ltr collections        
           
           pwd
