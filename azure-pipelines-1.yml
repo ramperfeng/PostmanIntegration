@@ -18,7 +18,7 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export test.html --reporter-htmlextra-template test.hbs --reporters=cli,json,junit --reporter-junit-export /etc/postman/junitreport.xml
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export /etc/postman/test.html --reporter-htmlextra-template test.hbs --reporters=cli,html,htmlextra,json,junit --reporter-junit-export /etc/postman/junitreport.xml
           
           ls -ltr collections        
           
@@ -35,9 +35,4 @@ steps:
        mergeTestResults: true
        failTaskOnFailedTests: false 
     
-    - task: NewmanPostman@4
-      inputs:
-        collectionSourceType: 'file'
-        reporters: 'html, htmlextra'
-        htmlExtraDarkTheme: true
-        htmlExtraLogs: true
+    
