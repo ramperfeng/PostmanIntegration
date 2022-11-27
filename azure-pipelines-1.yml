@@ -10,7 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 
-
 steps:
     - task: CmdLine@2
       continueOnError: true
@@ -38,4 +37,4 @@ steps:
            
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '**/*'
+        cwd: '$(Pipeline.Workspace)/s/collections/'
