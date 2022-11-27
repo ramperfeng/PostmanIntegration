@@ -21,7 +21,8 @@ steps:
           docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export /etc/postman/index.html --reporter-htmlextra-title "ppp" --reporters=cli,htmlextra,junit --reporter-junit-export /etc/postman/junitreport.xml
           ls -ltr collections
           ls -ltr 
-          chmod a=rwx **/index.html
+          su - collections
+          chmod -R 777 collections/index.html
                 
           
           ls -ltr /home/vsts/work/_tasks
