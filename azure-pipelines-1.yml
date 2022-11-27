@@ -18,7 +18,7 @@ steps:
         script: |
           ls -ltr
           pwd
-          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export htmlextra/index.html --reporter-htmlextra-title "ppp" --reporters=cli,htmlextra,junit --reporter-junit-export /etc/postman/junitreport.xml
+          docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json -r htmlextra --reporter-htmlextra-export /etc/postman/index.html --reporter-htmlextra-title "ppp" --reporters=cli,htmlextra,junit --reporter-junit-export /etc/postman/junitreport.xml
           ls -ltr collections
           ls -ltr 
                 
@@ -36,4 +36,4 @@ steps:
     
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '**/*.*'
+        cwd: '**/**'
