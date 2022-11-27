@@ -32,4 +32,4 @@ steps:
     
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '$(System.DefaultWorkingDirectory)/**/*'
+        cwd: '$(System.DefaultWorkingDirectory)'
