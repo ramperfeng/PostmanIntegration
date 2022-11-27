@@ -19,12 +19,8 @@ steps:
         script: |
           ls -ltr
           pwd
-          npm install -g newman-reporter-htmlextra
           docker run -v /home/vsts/work/1/s/collections:/etc/postman -t dannydainton/htmlextra run /etc/postman/petstore.json --reporters=cli,json,htmlextra --reporter-htmlextra-export /etc/postman/report.html --reporter-junit-export /etc/postman/junit-report.xml
-          artifacts:
-          when: always
-          paths:
-            - testReport.html
+          
           ls -ltr collections        
           
           pwd
@@ -42,4 +38,4 @@ steps:
            
     - task: UploadPostmanHtmlReport@1
       inputs:
-        cwd: '$(System.DefaultWorkingDirectory)'
+        cwd: '$(System.DefaultWorkingDirectory)/collections'
